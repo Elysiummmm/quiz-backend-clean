@@ -205,7 +205,8 @@ public class QuestionControllerTest {
                 correctAnswer,
                 Arrays.asList("Falsch 1", "Falsch 2", "Falsch 3"),
                 "sports",
-                "medium"
+                "medium",
+                null
         );
     }
 

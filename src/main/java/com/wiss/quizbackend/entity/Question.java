@@ -30,8 +30,7 @@ public class Question {
     private String difficulty;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "id")
-    @Column(name = "created_by_user_id")
+    @JoinColumn(referencedColumnName = "id", name = "created_by_user_id")
     private AppUser createdBy;
 
     // ✅ DEFAULT CONSTRUCTOR hinzufügen (für JPA/Hibernate):

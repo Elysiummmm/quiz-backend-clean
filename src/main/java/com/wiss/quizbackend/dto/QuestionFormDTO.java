@@ -298,7 +298,9 @@ public class QuestionFormDTO {
                 questionDTO.getCorrectAnswer(),
                 incorrectAnswers,
                 questionDTO.getCategory(),
-                questionDTO.getDifficulty()
+                questionDTO.getDifficulty(),
+                null,
+                null
         );
     }
 
