@@ -96,6 +96,12 @@ public class QuestionFormDTO {
             message = "Schwierigkeitsgrad muss einer der folgenden sein: easy, medium, hard")
     private String difficulty;
 
+    @Schema(description = "Benutzername des Erstellers", example = "john_doe")
+    private String creatorUsername;
+
+    @Schema(description = "ID des Erstellers", example = "42")
+    private Long creatorId;
+
     /**
      * Standard-Konstruktor für JSON-Deserialisierung.
      */
@@ -109,14 +115,19 @@ public class QuestionFormDTO {
      * @param incorrectAnswers Liste mit genau 3 falschen Antworten
      * @param category Die Kategorie
      * @param difficulty Der Schwierigkeitsgrad
+     * @param creatorUsername
+     * @param creatorId
      */
     public QuestionFormDTO(String question, String correctAnswer,
-                           List<String> incorrectAnswers, String category, String difficulty) {
+                           List<String> incorrectAnswers, String category, String difficulty,
+                           String creatorUsername, Long creatorId) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
         this.category = category;
         this.difficulty = difficulty;
+        this.creatorUsername = creatorUsername;
+        this.creatorId = creatorId;
     }
 
     /**
@@ -127,15 +138,20 @@ public class QuestionFormDTO {
      * @param incorrectAnswers Liste mit genau 3 falschen Antworten
      * @param category Die Kategorie
      * @param difficulty Der Schwierigkeitsgrad
+     * @param creatorUsername
+     * @param creatorId
      */
     public QuestionFormDTO(Long id, String question, String correctAnswer,
-                           List<String> incorrectAnswers, String category, String difficulty) {
+                           List<String> incorrectAnswers, String category, String difficulty,
+                           String creatorUsername, Long creatorId) {
         this.id = id;
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
         this.category = category;
         this.difficulty = difficulty;
+        this.creatorUsername = creatorUsername;
+        this.creatorId = creatorId;
     }
 
     // Getter und Setter

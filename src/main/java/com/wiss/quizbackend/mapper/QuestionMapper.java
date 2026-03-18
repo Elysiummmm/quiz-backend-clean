@@ -2,6 +2,7 @@ package com.wiss.quizbackend.mapper;
 
 import com.wiss.quizbackend.dto.QuestionDTO;
 import com.wiss.quizbackend.dto.QuestionFormDTO;
+import com.wiss.quizbackend.entity.AppUser;
 import com.wiss.quizbackend.entity.Question;
 
 import java.util.ArrayList;
@@ -81,13 +82,19 @@ public class QuestionMapper {
             return null;
         }
 
+        AppUser creator = entity.getCreatedBy();
+        String createdUsername = (creator != null) ? creator.getUsername() : "Unknown";
+        Long creatorId = (creator != null) ? creator.getId() : null;
+
         return new QuestionFormDTO(
                 entity.getId(),
                 entity.getQuestion(),
                 entity.getCorrectAnswer(),
                 entity.getIncorrectAnswers(),
                 entity.getCategory(),
-                entity.getDifficulty()
+                entity.getDifficulty(),
+                createdUsername,
+                creatorId
         );
     }
 
@@ -120,7 +127,8 @@ public class QuestionMapper {
                 dto.getCorrectAnswer(),
                 incorrectAnswers,
                 dto.getCategory(),
-                dto.getDifficulty()
+                dto.getDifficulty(),
+                null
         );
     }
 
