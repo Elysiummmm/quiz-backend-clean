@@ -34,7 +34,8 @@ public class QuestionRepositoryTest {
                 "Berlin",
                 Arrays.asList("München", "Hamburg", "Köln"),
                 "geography",
-                "easy"
+                "easy",
+                null
         );
 
 
@@ -59,7 +60,8 @@ public class QuestionRepositoryTest {
                 "Deutschland",
                 Arrays.asList("Brasilien", "Argentinien", "Spanien"),
                 "sports",
-                "medium"
+                "medium",
+                null
         );
 
 
@@ -68,7 +70,8 @@ public class QuestionRepositoryTest {
                 "Wolga",
                 Arrays.asList("Donau", "Rhein", "Elbe"),
                 "geography",
-                "hard"
+                "hard",
+                null
         );
 
         entityManager.persistAndFlush(sportQuestion);
@@ -97,7 +100,8 @@ public class QuestionRepositoryTest {
                 "8",
                 Arrays.asList("6", "10", "4"),
                 "biology",
-                "easy"
+                "easy",
+                null
         );
 
         Question hardQuestion = new Question(
@@ -105,7 +109,8 @@ public class QuestionRepositoryTest {
                 "12",
                 Arrays.asList("11", "13", "14"),
                 "mathematics",
-                "hard"
+                "hard",
+                null
         );
         entityManager.persistAndFlush(easyQuestion);
         entityManager.persistAndFlush(hardQuestion);
@@ -133,7 +138,8 @@ public class QuestionRepositoryTest {
                 "Answer 1",
                 Arrays.asList("Wrong 1", "Wrong 2", "Wrong 3"),
                 "movies",
-                "easy"
+                "easy",
+                null
         );
 
 
@@ -142,7 +148,8 @@ public class QuestionRepositoryTest {
                 "Answer 2",
                 Arrays.asList("Wrong 1", "Wrong 2", "Wrong 3"),
                 "movies",
-                "medium"
+                "medium",
+                null
         );
 
         entityManager.persistAndFlush(q1);
