@@ -34,6 +34,13 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public AppUser(String username, String email, String password, Role role) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     public String getUsername() { return username; }
 
     // we don't expire/lock/verify any credentials - these are always true
