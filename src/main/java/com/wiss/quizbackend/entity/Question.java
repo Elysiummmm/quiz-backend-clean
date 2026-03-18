@@ -29,6 +29,11 @@ public class Question {
     @Column(nullable = false, length = 32)
     private String difficulty;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(referencedColumnName = "id")
+    @Column(name = "created_by_user_id")
+    private AppUser createdBy;
+
     // ✅ DEFAULT CONSTRUCTOR hinzufügen (für JPA/Hibernate):
     public Question(){}
 
@@ -39,15 +44,17 @@ public class Question {
      * @param incorrectAnswers
      * @param category
      * @param difficulty
+     * @param creator
      */
     public Question(String question, String correctAnswer,
                     List<String> incorrectAnswers, String category,
-                    String difficulty) {
+                    String difficulty, AppUser creator) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
         this.category = category;
         this.difficulty = difficulty;
+        this.createdBy = creator;
     }
 
     /**
@@ -58,16 +65,18 @@ public class Question {
      * @param incorrectAnswers
      * @param category
      * @param difficulty
+     * @param creator
      */
     public Question(Long id, String question, String correctAnswer,
                     List<String> incorrectAnswers, String category,
-                    String difficulty) {
+                    String difficulty, AppUser creator) {
         this.id = id;
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
         this.category = category;
         this.difficulty = difficulty;
+        this.createdBy = creator;
     }
 
     public Long getId() {
@@ -117,4 +126,8 @@ public class Question {
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
+
+    public AppUser getCreatedBy() { return createdBy; }
+
+    public void setCreatedBy(AppUser createdBy) { this.createdBy = createdBy; }
 }
