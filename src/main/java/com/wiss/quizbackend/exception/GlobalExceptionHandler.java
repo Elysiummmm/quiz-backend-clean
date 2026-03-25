@@ -3,6 +3,7 @@ package com.wiss.quizbackend.exception;
 import com.wiss.quizbackend.dto.ErrorResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -126,6 +127,20 @@ public class GlobalExceptionHandler {
                 extractPath(request)
         );
         return new ResponseEntity<>(errorResponseDTO, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AuthorizationDeniedException.class)
+    public ResponseEntity<ErrorResponseDTO> handleAccessDenied(
+            AuthorizationDeniedException ex, WebRequest request) {
+
+        ErrorResponseDTO error = new ErrorResponseDTO(
+                "ACCESS_DENIED",
+                "Zugriff verweigert. Sie haben nicht die erforderlichen Berechtigungen.",
+                403,
+                extractPath(request)
+        );
+
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
 
     /**
