@@ -62,7 +62,7 @@ public class AuthController {
 
             AppUser user = appUserService.registerUser(username, email, rawPassword, Role.Player);
 
-            RegisterResponseDTO res = new RegisterResponseDTO(0L, "", "", "Player");
+            RegisterResponseDTO res = new RegisterResponseDTO(user.getId(), user.getUsername(), user.getEmail(), "Player");
 
             return new ResponseEntity<>(res, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
