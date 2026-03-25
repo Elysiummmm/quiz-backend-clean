@@ -38,6 +38,8 @@ public class AppUserService {
 
     public Optional<AppUser> findByUsername(String username) { return userRepository.findByUsername(username); }
 
+    public Optional<AppUser> findByEmail(String email) { return userRepository.findByEmail(email); }
+
     public Optional<AppUser> authenticateUser(String username, String rawPassword) {
         Optional<AppUser> user = findByUsername(username);
 
